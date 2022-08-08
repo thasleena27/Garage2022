@@ -1,0 +1,36 @@
+{% extends 'garageapp/index.html' %}
+{% block body_content %}
+<form method="post">
+    {%csrf_token%}
+    {{forms.errors}}
+    {{forms.management_form}}
+    <center>
+        <table style="text-align:center;">
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Demand Code</th>
+                    <th>Customer Voice/Problem</th>
+                    <th>Reported By</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in forms.forms %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{form.demandcode}}</td>
+                    <td>{{form.custprblm}}</td>
+                    <td>{{form.reportedby}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+               
+        </table>
+        <label>Demand description</label>
+        <input type="text" name="demanddesc" id="demandform_demanddesc"/>
+        <input type="hidden" name="hdjobcard" value="1"/>
+        <input type="submit" value="Save"/>
+    </center>
+</form>
+
+{%endblock%}

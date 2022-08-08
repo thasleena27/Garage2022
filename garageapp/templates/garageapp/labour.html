@@ -1,0 +1,108 @@
+{%extends 'garageapp/index.html'%}
+{% block body_content %}
+<form method="post">
+    {%csrf_token%}
+    {{forms.errors}}
+    {{forms.management_form}}
+    <center>
+<div style="text-align:left ;">
+    <h4>LABOUR DETAILS</h4>
+</div>
+<div style="margin-bottom: 30px;">
+    <table id="idlabourdetailstbl" style="text-align:center;">
+        <thead>
+            <tr>
+                <th>Sl.No</th>
+                <th>Labour</th>
+                <th style="width:10px">Mod Y/N</th>
+                <th style="width:10px">Flat Amount</th>
+                <th style="width:10px">Billable Type</th>
+                <th>%</th>
+                <th>Value</th>
+                <th style="width:10px">Split Ratio</th>
+                <th>CUST</th>
+                <th>INS</th>
+                <th>DLR</th>
+                <th>OEM</th>
+                <th style="width:10px">Labour Amount</th>
+                <th style="width:10px">FRM Hrs</th>
+                <th>Technician</th>
+                <th>Technician2</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in forms.forms %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td class="xlt">{{form.labour}}</td>
+                <td class="smt">{{form.mod}}</td>
+                <td class="mdt">{{form.flatamount}}</td>
+                <td class="mdt">{{form.billabletype}}</td>
+                <td class="mdt">{{form.percent}}</td>
+                <td class="smt">{{form.value}}</td>
+                <td class="smt">{{form.splitratio}}</td>
+                <td class="lgt">{{form.cust}}</td>
+                <td class="smt">{{form.ins}}</td>
+                <td class="smt">{{form.dlr}}</td>
+                <td class="smt">{{form.oem}}</td>
+                <td class="lgt">{{form.labouramt}}</td>
+                <td class="smt">{{form.frmhrs}}</td>
+                <td class="xlt">{{form.technician1}}</td>
+                <td class="xlt">{{form.technician2}}</td>
+            </tr>
+            {%endfor%}
+        <!--<tr><td class="lgt" colspan="11"><input type="text" name="totalamt"/></td></tr>-->
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td class="xlt"><input type="text" name="dummy1" style="visibility:hidden"></td>
+                <td class="smt"><input type="text" name="dummy2" style="visibility:hidden"></td>
+                <td class="mdt"><input type="text" name="dummy3" style="visibility:hidden"></td>
+                <td class="mdt"><input type="text" name="dummy4" style="visibility:hidden"></td>
+                <td class="mdt"><input type="text" name="dummy5" style="visibility:hidden"></td>
+                <td class="smt"><input type="text" name="dummy6" style="visibility:hidden"></td>
+                <td class="smt"><input type="text" name="dummy7" style="visibility:hidden"></td>
+                <td class="lgt"><input type="text" name="dummy8" style="visibility:hidden"></td>
+                <td class="smt"><input type="text" name="dummy9" style="visibility:hidden"></td>
+                <td class="smt"><input type="text" name="dummy10" style="visibility:hidden"></td>
+                <td class="smt"><input type="text" name="dummy11" style="visibility:hidden"></td>
+                <td class="lgt"><input type="text" name="dummy12" id="totalamount"></td>
+                <td class="smt"><input type="text" name="dummy13" style="visibility:hidden"></td>
+                <td class="xlt"><input type="text" name="dummy14" style="visibility:hidden"></td>
+                <td class="xlt"><input type="text" name="dummy15" style="visibility:hidden"></td>
+            </tr>
+    </tbody>      
+    </table>
+    
+</div>
+</center>
+
+<table>
+    <tr>
+        <td><label>Sub Contractor</label></td>
+        <td><input type="text" name="subcontractor"/></td> 
+    </tr>
+    <tr>
+        <td><label>Labour Description</label></td>
+        <td><input type="text" name="labourdescription" id="labourdescription"/></td>
+    </tr>    
+    <tr>
+        <td><label>Technical Description</label></td>
+        <td><input type="text" name="technicaldescription"/></td>   
+    </tr>
+    <tr>
+        <td><label>Split Description</label></td>
+        <td><input type="text" name="splitdescription"/></td>
+    </tr>
+    <tr>
+        <td><label>Approval Status</label></td>
+        <td><input type="text" name="approvalstatus"/></td>
+    </tr>
+</table>
+       
+<div>
+    <center>
+<input type="submit" value="Save"/>
+<input type="submit" value="Back"
+    </center>
+</form>
+{%endblock%}

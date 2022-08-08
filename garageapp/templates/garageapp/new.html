@@ -1,0 +1,191 @@
+{%extends 'garageapp/index.html'%}
+{% block body_content %}
+<form method="post">
+    {%csrf_token%}
+    <center>
+      {{jobcardform.errors}}
+      {{vehicleform.errors}}
+      {{customerform.errors}}
+      <div style="border :1px solid red">
+        <!--<h4><span class="heading">JOBCARD DETAILS</span></h4>-->
+            <div class="d-flex flex-row">
+              <div class="mx-4">
+                <label >JobCardNo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+              </div>
+              <div class="p-2">
+                <!--<input type="text" name="jobcardno"/>-->
+                {{jobcardform.jobcardno}}
+              </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                  <label class="label">Date&Time&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  
+                </div>
+                <div class="p-2">
+                  <!--<input type="text" name="datatime"/>-->
+                  {{jobcardform.datetime}}
+                </div>
+                <div class="p-2">
+                  <label class="label">CheckIn Date&Time</label>
+                </div>
+                <div class="p-2">
+                  <!--<input type="text" name="checkindatetime"/>-->
+                  {{jobcardform.checkindatetime}}
+                </div>
+            </div>
+        </div>
+      <div class="d-flex flex-row" style="border :2px solid blue">
+          <!--<div class="d-flex flex-row">
+            <div class="p-2">
+              {{vehicleform.as_table}}
+            </div>-->
+           <div> <!--nisha -->
+          <div class="d-flex flex-row">
+            
+                <div class="mx-4">
+                    <label class="label">Reg No.&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="mx-5">
+                    <!--<input type="text" name="regno"/>-->
+                    {{vehicleform.regno}}
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">OMR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="mx-5">
+                    {{vehicleform.omr}}
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Service Type&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="mx-3">
+                    {{vehicleform.servicetype}}
+                </div>
+                <div class="mx-0">
+                    <input type="text" name="servicename"/>
+                </div>
+            </div>  
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Wash Type  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="mx-3">
+                   <!---- <select name="wash type" id="wash_type">
+                        <option value="Select">{{vehicleform.washtype}}</option>
+                        <option value="Wash">Wash</option>
+                        <option value="Nowash">No Wash</option>
+                    </select>-->
+                    {{vehicleform.washtype}}
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Service Advisor&nbsp;</label>
+                </div>
+                <div class="mx-2">
+                    {{vehicleform.service_advisor}}
+                </div>
+                <div class="mx-2">
+                    <input type="text" name="serviceadvisorname"/>
+                </div>
+            </div> 
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Technician&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="mx-2">
+                    <!--<select>
+                        <option value="select">Select</option>
+                    </select>-->
+                    {{vehicleform.technician}}
+                </div>
+                <div class="mx-2">
+                    <input type="text" name="technicianname"/>
+                </div>
+            </div> 
+            <div class="d-flex flex-row">
+                <div class="mx-3">
+                    <label class="label">Technical Advisor&nbsp;</label>
+                </div>
+                <div class="p-2">
+                    {{vehicleform.technical_advisor}}
+                </div>
+                <div class="p-2">
+                    <input type="text" name="technicaladvisorname"/>
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Vehicle Model&nbsp;&nbsp;</label>
+                </div>
+                <div class="p-2">
+                    {{vehicleform.vehiclemodel}}
+                </div>
+                <div class="p-2">
+                    <input type="text" name="vehiclename"/>
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Chasis No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="p-2">
+                    {{vehicleform.chasisno}}
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="mx-4">
+                    <label class="label">Vehicle Variant</label>
+                </div>
+                <div class="p-2">
+                    {{vehicleform.vehiclevariant}}
+                </div>
+                <div class="p-2">
+                    <input type="text" name="variantname"/>
+                </div>
+            </div>
+            <div class="d-flex flex-variant">
+                <div class="mx-5">
+                    
+                    <label class="label">{{vehicleform.color.label}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="p-2">
+                    {{vehicleform.color}}
+                </div>
+                <div class="p-2">
+                    <input type="text" name="colorname" id="id_vehicle_form-colorname"/>
+                </div>
+            </div>
+          
+           </div> <!--Closing of nisha -->
+           <div>
+          <div class="d-flex flex-row">
+            <table>
+              {{customerform.as_table}}
+            </table>
+          </div>
+        </div>
+            <!--<div class="p-2">
+              <table>
+                {{customerform.as_table}}
+              </table>
+            </div>-->
+          
+              
+          </div>
+          
+        <div class="d-flex flex-row">
+            <div class="mx-5">
+                <input type="submit" value="Save"/>
+            </div>
+        </div>
+        
+      
+    </center>
+</form>
+{%endblock%}

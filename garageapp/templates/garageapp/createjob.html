@@ -1,0 +1,80 @@
+{%extends 'garageapp/index.html'%}
+{% block body_content %}
+<form method="post">
+    {%csrf_token%}
+    <center>
+      {{jobcardform.errors}}
+      {{vehicleform.errors}}
+      {{customerform.errors}}
+      
+        <!--<h4><span class="heading">JOBCARD DETAILS</span></h4>-->
+        <div style="margin-top:4px">
+                <label class="label-special">
+                      Jobcardno 
+                      {{jobcardform.jobcardno}}
+                      <input type="text" name="dummyjobcardno" style="visibility:hidden" />
+        
+                </label>
+               
+                  <label class="label-special">Date & Time
+                  {{jobcardform.datetime}}
+                  <input type="text" name="dummydatetime" style="visibility:hidden" />
+                </label>
+               
+                  <label class="label-special">
+                    CheckIn Date & Time
+                    {{jobcardform.checkindatetime}}
+                    <input type="text" name="dummycheckin" style="visibility:hidden" />
+                  </label>
+          </div>
+              <div style="border:1px solid green" class="row">
+                <div class="col-md-5">
+                  <!--<input type="text" name="checkindatetime"/>-->
+                  <label style="margin-top:10px" class="label-special">
+                     RegNo {{vehicleform.regno}}<input type="text" name="dummy0" style="visibility:hidden" />
+                  </label>
+                  <label class="label-special">
+                    OMR {{vehicleform.omr}}<input type="text" name="dummy2" style="visibility:hidden" />
+                  </label>
+                  <label class="label-special">
+                    Service Type {{vehicleform.servicetype}}<input type="text" name="servicename" id="id_vehicle_form-servicetypename"/>
+                  </label> 
+                  <label class="label-special">
+                   Wash Type {{vehicleform.washtype}}<input type="text" name="dummywashtype" style="visibility:hidden" />
+                  </label> 
+                  <label class="label-special">
+                    Service Advisor{{vehicleform.service_advisor}}<input type="text" name="serviceadvisorname" id="id_vehicle_form-service_advisorname"/>
+                  </label>
+                  <label class="label-special">
+                    Technician{{vehicleform.technician}}<input type="text" name="technicianname" id="id_vehicle_form-technicianname" />
+                  </label>
+                  <label class="label-special">
+                    Technical Advisor{{vehicleform.technical_advisor}}<input type="text" name="technicaladvisorname" id="id_vehicle_form-technical_advisorname"/>
+                  </label>
+                  <label class="label-special">
+                    Vehicle Model{{vehicleform.vehiclemodel}}<input type="text" name="vehiclename" id="id_vehicle_form-vehiclemodelname" />
+                  </label> 
+                  <label class="label-special">
+                    Chasis No{{vehicleform.chasisno}}<input type="text" name="dummychasis" style="visibility:hidden" />
+                  </label>
+                  <label class="label-special">
+                    Vehicle Variant{{vehicleform.vehiclevariant}}<input type="text" name="variantname" id="id_vehicle_form-vehiclevariantname" />
+                  </label> 
+                  <label class="label-special">
+                    Color{{vehicleform.color}}<input type="text" name="colorname" id="id_vehicle_form-colorname" />
+                  </label> 
+              </div>
+              <div class="col-md-7">
+                  <table id="tblCustomerJobCard">
+                    {{customerform.as_table}}
+                  </table>
+              </div>
+            </div> 
+        
+                  <input type="submit" value="Save"/>
+  
+        
+      
+    </center>
+</form>
+{%endblock%}

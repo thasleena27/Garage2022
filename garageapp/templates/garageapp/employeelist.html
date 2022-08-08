@@ -1,0 +1,30 @@
+
+{%extends 'garageapp/index.html'%}
+{% block body_content %}
+{% load custom_tags %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>PhoneNo</th>
+            <th>Email</th>
+            <th>IsServiceAdvisor</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in employeelist %}
+
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.isServiceAdvisor|expand}}</td>
+            
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+
+{%endblock%}

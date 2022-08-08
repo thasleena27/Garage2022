@@ -1,0 +1,141 @@
+
+{%extends 'garageapp/index.html'%}
+{% block body_content %}
+<form method="post" autocomplete="off">
+    {%csrf_token%}
+    {{forms.errors}}
+    {{forms.management_form}}
+    <center>
+     <div style="text-align:left ;">
+        <h4>REGISTRATION DETAILS</h4>
+     </div>   
+    <div style="display:flex;margin-left:20px">
+    <div class="form-group">
+        <label>Issue No</label>
+        {{modelform.issueno}}
+    </div>
+    <div class="form-group">
+        <label>Issue Date</label>
+        {{modelform.issuedate}}
+    </div>
+    <div class="form-group">
+        <label>Registration No</label>
+        {{modelform.regno}}
+    </div>
+    </div> 
+    <div  style="display:flex;margin-left :10px;">
+    <div class="form-group">
+        <label>Stores&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        {{modelform.stores}}
+    </div>
+    <div class="form-group">
+        <label>Job Card No</label>
+        {{modelform.jobcardno}}
+    </div>
+    <div class="form-group">
+        <label></label>
+        <input type="text" name="dummy" style="visibility:hidden">
+    </div>
+    </div>
+    <div style="text-align:left;">
+        <h4>BATCH DETAILS</h4>
+    </div>
+    <div style="display:flex;margin-left:400px;">
+    <div class="form-group" style="margin-right:3px">
+        <label>Part No</label><br>
+        <select id="partnoctrl" style="width: 200px;">
+            <option value="0">---------</option>
+        {% for item in partscodelist %}
+        
+        <option value={{item.partsid}}>{{item.partscode}}</option>
+        {%endfor%}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Batch</label><br>
+        <select id="batchcntrl" style="width:200px">
+           
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Bill Qty</label><br>
+        <input type="text" name="billqty" id="billqtyid"/>
+    </div>
+    </div>
+
+    <div style="text-align:left ;">
+        <h4>PART DETAILS</h4>
+    </div>
+    <div style="margin-bottom: 30px;">
+        <table id="idpartsdetailstbl" style="text-align:center;">
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Part No.</th>
+                    <th>Requested Qty</th>
+                    <th>Issued Qty</th>
+                    <th>Store Bin Location</th>
+                    <th>Current Stock</th>
+                    <th>Float Stock</th>
+                    <th>Issue Type</th>
+                    <th>Issue Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in forms.forms %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{form.partno}}</td>
+                    <td>{{form.requestedqty}}</td>
+                    <td>{{form.issuedqty}}</td>
+                    <td>{{form.storebinlocation}}</td>
+                    <td>{{form.currentstock}}</td>
+                    <td>{{form.floatstock}}</td>
+                    <td>{{form.issuetype}}</td>
+                    <td>{{form.issueqty}}</td>
+                </tr>
+                {%endfor%}
+                <tr>
+                <!--<td colspan="9">Total Issue Qty</td>-->
+                <td><input class="issueclass1" type="text" name="extra1" style="visibility:hidden"/></td>
+                <td><input class="issueclass1" type="text" name="extra2" style="visibility:hidden"/></td>
+                <td><input class="issueclass1" type="text" name="extra3" style="visibility:hidden"/></td>
+                <td><input class="issueclass1" type="text" name="extra4" style="visibility:hidden"/></td>
+                <td><input class="issueclass1" type="text" name="extra5" style="visibility:hidden"/></td>
+                <td><input class="issueclass1" type="text" name="extra6" style="visibility:hidden"/></td>
+                <td><input class="issueclass1" type="text" name="extra7" style="visibility:hidden"/></td>
+                <td><label>Total Issue Qty</label></td>
+                <td><input class="issueclass1" type="text" name="extra9" id="totalissueqty" readonly/></td>
+                </tr>
+            </tbody>
+               
+        </table>
+    </div>
+    <table>
+        <tr>
+            <td><label>Part Description</label></td>
+            <td><input type="text" name="partdescription"/></td>
+            <td><label>Split Description</label></td>
+            <td><input type="text" name="splitdescription"/></td>
+            <td><label>Issue Reason</label></td>
+            <td><input type="text" name="issuereason"/></td>    
+        </tr>
+        <tr>
+            <td><label>CUST</label></td>
+            <td><input type="text" name="cust"/></td>
+            <td><label>INS</INS></label></td>
+            <td><input type="text" name="ins"/></td>
+        </tr>    
+        <tr>
+            <td><label>DLR</label></td>
+            <td><input type="text" name="dlr"/></td>   
+            <td><label>OEM</INS></label></td>
+            <td><input type="text" name="oem"/></td>
+        </tr>
+    </table>
+           
+   
+    <input type="submit" value="Save"/>
+     </center>
+</form>
+{%endblock%}

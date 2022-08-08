@@ -1,0 +1,32 @@
+{% extends 'garageapp/index.html' %}
+{% block body_content %}
+<form method="post">
+    {%csrf_token%}
+    {{forms.errors}}
+    {{forms.management_form}}
+    <center>
+        <a>This is to check</a>
+        <table style="text-align:center;">
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Title</th>
+                    <th>Publishing Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in forms %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{form.title}}</td>
+                    <td>{{form.pub_date}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+               
+        </table>
+        <input type="submit" value="Save"/>
+    </center>
+</form>
+
+{%endblock%}
